@@ -29,12 +29,16 @@ public class TestOnboarding {
         
         // Navegar a la página web
         driver.get("https://tarjetacredito.dev.cuentafuturo.com/");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        // Entrar a la bienvenida del onboarding
+        WebElement botonBienvenida = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='__next']/main/div/div[2]/div/div[2]/div/button")));
+        botonBienvenida.click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         // Introducir un valor en el campo "cid"
@@ -45,7 +49,7 @@ public class TestOnboarding {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         // Introducir un valor en el campo "fingerPrint"
@@ -55,7 +59,7 @@ public class TestOnboarding {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         // Hacer clic en el checkbox y en el botón de envío
@@ -73,7 +77,7 @@ public class TestOnboarding {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ie) {
-                ie.printStackTrace();
+                Thread.currentThread().interrupt();
             }
             js.executeScript("arguments[0].click();", button);
         }
@@ -81,7 +85,7 @@ public class TestOnboarding {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         // Introducir un valor en el campo "campoTelefono"
@@ -93,13 +97,13 @@ public class TestOnboarding {
         campoEmail.sendKeys("xavierpruebasautomatizadas@gmail.com");
 
         // Hacer clic en el botón "botonContinuar"
-        WebElement botonContinuar = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
-        botonContinuar.click();
+        WebElement botonContinuar1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
+        botonContinuar1.click();
 
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         // Hacer clic en el botón "Ir a tomar la foto"
@@ -109,65 +113,69 @@ public class TestOnboarding {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
+//
 
 
-        // Acceder a la cámara frontal
-        WebElement camaraFrontal = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='fPhiWidgetContainer']//facephi-selphid")));
-        camaraFrontal.click();
-        
+
+// Hacer clic en el elemento para seleccionar la parte delantera de la foto
+WebElement fotoDelantera = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='fPhiWidgetContainer']//facephi-selphid")));
+fotoDelantera.click();
 
 try {
-    Thread.sleep(5000); // Esperar a que la foto se tome
+    Thread.sleep(2000); // Breve espera antes de seleccionar la parte trasera
 } catch (InterruptedException e) {
-    e.printStackTrace();
+    Thread.currentThread().interrupt();
 }
 
-// Usar esta foto trasera
-WebElement usarEstaFotoTrasera = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='fPhiWidgetContainer']//facephi-selphid")));
-usarEstaFotoTrasera.click();
+// Hacer clic nuevamente en el mismo elemento para seleccionar la parte trasera de la foto
+WebElement fotoTrasera = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='fPhiWidgetContainer']//facephi-selphid")));
+fotoTrasera.click();
 
 try {
-    Thread.sleep(5000); // Esperar a que la foto se tome
+    Thread.sleep(5000); // Espera para simular la acción de tomar la foto
 } catch (InterruptedException e) {
-    e.printStackTrace();
+    Thread.currentThread().interrupt();
 }
 
-// Ir a tomar foto
-WebElement irATomarFoto = wait.until(ExpectedConditions.elementToBeClickable(By.id("btnNext")));
-irATomarFoto.click();
+// Hacer clic en el botón "Ir a tomar foto"
+WebElement botonIrATomarFoto = wait.until(ExpectedConditions.elementToBeClickable(By.id("btnNext")));
+botonIrATomarFoto.click();
 
 try {
-    Thread.sleep(5000); // Esperar a que la página cargue
+    Thread.sleep(5000); // Espera para simular la acción de tomar la foto
 } catch (InterruptedException e) {
-    e.printStackTrace();
+    Thread.currentThread().interrupt();
 }
 
-// Validar foto
-WebElement validarFoto = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()[normalize-space() = 'Validar foto']]")));
-validarFoto.click();
+// Validar la foto
+WebElement botonValidarFoto = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()[normalize-space() = 'Validar foto']]")));
+botonValidarFoto.click();
 
 try {
-    Thread.sleep(5000); // Esperar a que la validación se complete
+    Thread.sleep(5000); // Espera para simular la validación de la foto
 } catch (InterruptedException e) {
-    e.printStackTrace();
+    Thread.currentThread().interrupt();
 }
 
-// Continuar
-WebElement continuar = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()[normalize-space() = 'Continuar']]")));
-continuar.click();
+// Continuar después de validar la foto
+WebElement botonContinuar = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()[normalize-space() = 'Continuar']]")));
+botonContinuar.click();
 
 try {
-    Thread.sleep(5000); // Esperar a que la siguiente página cargue
+    Thread.sleep(5000); // Espera antes de continuar con el siguiente paso
 } catch (InterruptedException e) {
-    e.printStackTrace();
+    Thread.currentThread().interrupt();
 }
 
 // Aquí puedes continuar con los siguientes pasos de tu flujo
-        // FALTA PONER LOS SIGUIENTES PASOS DEL FLUJO
 
-        
+
+// Continúa con los siguientes pasos de tu flujo
+        // Aquí puedes continuar con los siguientes pasos de tu flujo
+
+        // Finalmente, cierra el navegador
         // driver.quit();
     }
 }
