@@ -1,12 +1,14 @@
 package testSelenium;
 
 import org.openqa.selenium.By;
+import java.util.ArrayList;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -206,6 +208,15 @@ public class TestOnboarding {
             Thread.currentThread().interrupt();
         }  
 
+        // Esperar a que el elemento con el selector CSS label[for='privateJob'] sea clickeable y hacer clic en él
+WebElement privateJobLabel = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("label[for='privateJob']")));
+privateJobLabel.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
 
         // Hacer clic en el elemento con id="companyName" y escribir "Construcciones Mercury S.A"
 WebElement companyName = wait.until(ExpectedConditions.elementToBeClickable(By.id("companyName")));
@@ -329,6 +340,195 @@ try {
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
+
+// Esperar a que el botón con el selector CSS button[type='submit'] sea clickeable y hacer clic en él
+WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
+submitButton.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+
+// Esperar a que el campo con el selector CSS input[placeholder='Ej: $ 700.00'] sea clickeable y escribir 980
+WebElement firstInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[placeholder='Ej: $ 700.00']")));
+firstInput.click();
+firstInput.sendKeys("980");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el campo con el selector CSS input[placeholder='Ej: $ 250.00'] sea clickeable y escribir 275
+WebElement secondInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[placeholder='Ej: $ 250.00']")));
+secondInput.click();
+secondInput.sendKeys("275");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el botón con el selector CSS button[type='submit'] sea clickeable y hacer clic en él
+WebElement finalSubmitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
+finalSubmitButton.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el elemento con el selector CSS .lucide.lucide-chevron-down sea clickeable y hacer clic en él
+WebElement chevronDown = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".lucide.lucide-chevron-down")));
+chevronDown.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Hacer keydown y keyenter
+Actions actions = new Actions(driver);
+actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el campo con el selector CSS #names sea clickeable y escribir Xavier Adrian
+WebElement namesInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#names")));
+namesInput.click();
+namesInput.sendKeys("Xavier Adrian");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el campo con el selector CSS #fatherLastName sea clickeable y escribir Andrade
+WebElement fatherLastNameInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#fatherLastName")));
+fatherLastNameInput.click();
+fatherLastNameInput.sendKeys("Andrade");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el campo con el selector CSS #motherLastName sea clickeable y escribir Ochoa
+WebElement motherLastNameInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#motherLastName")));
+motherLastNameInput.click();
+motherLastNameInput.sendKeys("Ochoa");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el campo con el selector CSS #phoneNumber sea clickeable y escribir 0994874986
+WebElement phoneNumberInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#phoneNumber")));
+phoneNumberInput.click();
+phoneNumberInput.sendKeys("0994874986");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el botón con el selector CSS button[type='submit'] sea clickeable y hacer clic en él
+WebElement submitButtonFinal = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
+submitButtonFinal.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el elemento con el selector CSS div[class='bb-card bb-card__border--primary bb-card__background--undefined'] div[data-pc-section='content'] sea clickeable y hacer clic en él
+WebElement contentSection = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[class='bb-card bb-card__border--primary bb-card__background--undefined'] div[data-pc-section='content']")));
+contentSection.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el botón con el selector CSS .bb-button.bb-button--primary sea clickeable y hacer clic en él
+WebElement primaryButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bb-button.bb-button--primary")));
+primaryButton.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Abrir una nueva pestaña y acceder a la URL especificada
+((JavascriptExecutor) driver).executeScript("window.open('https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=156&ct=1722265131&rver=7.0.6738.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26deeplink%3dowa%252f0%252f%253fstate%253d1%2526redirectTo%253daHR0cHM6Ly9vdXRsb29rLmxpdmUuY29tL21haWwvMC8%26RpsCsrfState%3d34d7fa3c-b088-fc2b-8e77-8ee411630f27&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c', '_blank');");
+
+// Cambiar el control a la nueva pestaña
+ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+driver.switchTo().window(tabs.get(1));
+
+// Esperar a que el campo con el selector CSS #i0116 sea clickeable y escribir xandrado@bolivariano.com
+WebElement emailInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#i0116")));
+emailInput.click();
+emailInput.sendKeys("xandrado@bolivariano.com");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el botón con el selector CSS #idSIButton9 sea clickeable y hacer clic en él
+WebElement nextButtonLogin = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#idSIButton9")));
+nextButtonLogin.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+// Esperar a que el campo con el selector XPath //*[@id="i0118"] sea clickeable y hacer clic en él
+WebElement passwordInput = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='i0118']")));
+passwordInput.click();
+passwordInput.sendKeys("MOquito10a7b5fj1p*");
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+
+// Esperar a que el botón con el selector XPath //*[@id="idSIButton9"] sea clickeable y hacer clic en él
+WebElement signInButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='idSIButton9']")));
+signInButton.click();
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+        /*
 
         /*
         // Hacer clic en el botón "Ir a tomar la foto"
