@@ -38,12 +38,18 @@ public class TestOnboarding {
         driver.get("https://tarjetacredito.dev.cuentafuturo.com/");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
+        
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         // Entrar a la bienvenida del onboarding
         WebElement botonBienvenida = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
         botonBienvenida.click();
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -54,7 +60,7 @@ public class TestOnboarding {
         campoCid.sendKeys("0914897038");
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -64,7 +70,7 @@ public class TestOnboarding {
         fingerPrint.sendKeys("B3456F9211");
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -75,14 +81,14 @@ public class TestOnboarding {
 
         try {
             checkbox.click();
-            Thread.sleep(1000);
+            Thread.sleep(5000);
             button.click();
         } catch (Exception e) {
             // Si hay un error al hacer clic, usar JavaScriptExecutor para hacer clic en el checkbox y en el botón
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();", checkbox);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
@@ -112,23 +118,36 @@ public class TestOnboarding {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-
-        // Esperar a que el elemento con el selector CSS ".bb-input-wrapper" sea clickeable y hacer clic en él
-        WebElement bbInputWrapper = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bb-input-wrapper")));
-        bbInputWrapper.click();
+/* 
+        // Hacer clic en el elemento con el selector CSS "button:nth-child(2)"
+        WebElement button2 = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button:nth-child(2)")));
+        button2.click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+
+        */
+        // Esperar a que el elemento con el selector CSS ".bb-input-wrapper.bb-input__wrapper--primary" sea clickeable y hacer clic en él
+        WebElement bbInputWrapperPrimary = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bb-input-wrapper.bb-input__wrapper--primary")));
+        bbInputWrapperPrimary.click();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        
         
         // Esperar a que el elemento con el selector CSS ".pac-target-input" sea clickeable y hacer clic en él
         WebElement pacTargetInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".pac-target-input")));
         pacTargetInput.click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -137,7 +156,7 @@ public class TestOnboarding {
         pacTargetInput.sendKeys("Ciudad Celeste");
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -147,7 +166,7 @@ public class TestOnboarding {
         pacTargetInput.sendKeys(Keys.ENTER);
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -157,7 +176,7 @@ public class TestOnboarding {
         mapButton.click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -171,7 +190,7 @@ public class TestOnboarding {
         
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -181,7 +200,7 @@ public class TestOnboarding {
         addressButton.click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -191,7 +210,7 @@ public class TestOnboarding {
         dropdownLabel.click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -203,7 +222,7 @@ public class TestOnboarding {
         
 
         try {
-            Thread.sleep(1000); // Esperar un momento para que la selección se complete
+            Thread.sleep(5000); // Esperar un momento para que la selección se complete
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }  
@@ -213,7 +232,7 @@ WebElement privateJobLabel = wait.until(ExpectedConditions.elementToBeClickable(
 privateJobLabel.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -224,7 +243,7 @@ companyName.click();
 companyName.sendKeys("Construcciones Mercury S.A");
 
 try {
-    Thread.sleep(500);
+    Thread.sleep(1000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -235,7 +254,7 @@ seniority.click();
 seniority.sendKeys("8");
 
 try {
-    Thread.sleep(500);
+    Thread.sleep(1000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -246,7 +265,7 @@ conventionalPhone.click();
 conventionalPhone.sendKeys("42255254");
 
 try {
-    Thread.sleep(500);
+    Thread.sleep(1000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -257,7 +276,7 @@ monthlyIncome.click();
 monthlyIncome.sendKeys("1400");
 
 try {
-    Thread.sleep(500);
+    Thread.sleep(1000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 
@@ -268,7 +287,7 @@ WebElement jobAddress = wait.until(ExpectedConditions.elementToBeClickable(By.cs
 jobAddress.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(3000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -278,7 +297,7 @@ WebElement pacTargetInputField = wait.until(ExpectedConditions.elementToBeClicka
 pacTargetInputField.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(3000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -287,7 +306,7 @@ try {
 pacTargetInputField.sendKeys("Ciudad colon");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -297,7 +316,7 @@ pacTargetInputField.sendKeys(Keys.DOWN);
 pacTargetInputField.sendKeys(Keys.ENTER);
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -307,7 +326,7 @@ WebElement confirmButton = wait.until(ExpectedConditions.elementToBeClickable(By
 confirmButton.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -317,7 +336,7 @@ WebElement jobAddressReference = wait.until(ExpectedConditions.elementToBeClicka
 jobAddressReference.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -326,7 +345,7 @@ try {
 jobAddressReference.sendKeys("OFICINA SIEMPRE VIVA PUERTA 6 PISO 14");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -336,7 +355,7 @@ WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.cs
 nextButton.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -346,7 +365,7 @@ WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.
 submitButton.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -369,7 +388,7 @@ secondInput.click();
 secondInput.sendKeys("275");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -379,7 +398,7 @@ WebElement finalSubmitButton = wait.until(ExpectedConditions.elementToBeClickabl
 finalSubmitButton.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -389,7 +408,7 @@ WebElement chevronDown = wait.until(ExpectedConditions.elementToBeClickable(By.c
 chevronDown.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -410,7 +429,7 @@ namesInput.click();
 namesInput.sendKeys("Xavier Adrian");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -421,7 +440,7 @@ fatherLastNameInput.click();
 fatherLastNameInput.sendKeys("Andrade");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -432,7 +451,7 @@ motherLastNameInput.click();
 motherLastNameInput.sendKeys("Ochoa");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -443,7 +462,7 @@ phoneNumberInput.click();
 phoneNumberInput.sendKeys("0994874986");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -453,7 +472,7 @@ WebElement submitButtonFinal = wait.until(ExpectedConditions.elementToBeClickabl
 submitButtonFinal.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -463,7 +482,7 @@ WebElement contentSection = wait.until(ExpectedConditions.elementToBeClickable(B
 contentSection.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -473,10 +492,28 @@ WebElement primaryButton = wait.until(ExpectedConditions.elementToBeClickable(By
 primaryButton.click();
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
+
+
+// Continuar con el siguiente paso: Envío de tarjeta Esperar a que el botón con el selector CSS .bb-button.bb-button--primary sea clickeable y hacer clic en él
+WebElement nextPrimaryButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bb-button.bb-button--primary")));
+nextPrimaryButton.click();
+
+try {
+    Thread.sleep(5000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+
+
+
+
+/* 
+
+
 
 // Abrir una nueva pestaña y acceder a la URL especificada
 ((JavascriptExecutor) driver).executeScript("window.open('https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=156&ct=1722265131&rver=7.0.6738.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26deeplink%3dowa%252f0%252f%253fstate%253d1%2526redirectTo%253daHR0cHM6Ly9vdXRsb29rLmxpdmUuY29tL21haWwvMC8%26RpsCsrfState%3d34d7fa3c-b088-fc2b-8e77-8ee411630f27&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c', '_blank');");
@@ -491,7 +528,7 @@ emailInput.click();
 emailInput.sendKeys("xandrado@bolivariano.com");
 
 try {
-    Thread.sleep(1000);
+    Thread.sleep(5000);
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -527,7 +564,7 @@ try {
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
-
+*/
         /*
 
         /*
